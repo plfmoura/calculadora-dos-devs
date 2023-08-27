@@ -92,10 +92,10 @@ function App() {
       </main>
       <footer className='footer-align'>
         <p>Feita pelos Devs do Club dos Devs</p>
-        <a href='https://github.com/smksouza' target='blank'>Samuel Souza</a>
-        <a href='https://github.com/cfias'>Cleidson Fias</a>
-        <a href='https://github.com/devmartins03'>Maykon Martins</a>
-        <a href='https://github.com/plfmoura'>Pedro Moura</a>
+        <a style={{margin: "2px"}} href='https://github.com/smksouza' target='blank'>Samuel Souza</a>
+        <a style={{margin: "2px"}} href='https://github.com/cfias'>Cleidson Fias</a>
+        <a style={{margin: "2px"}} href='https://github.com/devmartins03'>Maykon Martins</a>
+        <a style={{margin: "2px"}} href='https://github.com/plfmoura'>Pedro Moura</a>
         <p>Agosto 2023</p>
       </footer>
     </>
