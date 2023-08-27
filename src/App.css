@@ -48,3 +48,9 @@
   cursor: pointer;
   font-size: 30px;
 }
+
+.footer-align {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

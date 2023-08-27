@@ -49,43 +49,57 @@ function App() {
   };
 
   return (
-    <main className='App-container'>
-      <section className="calculator-display">
-        <span className='calculator-result'>{count}</span>
-      </section>
-      <section className="calculator-pad">
-        <div className="button-align">
-          <CustomButton onPress={() => handleCleanDisplay()} value={"AC"} variant={'primary-btn'} />
-          <CustomButton onPress={() => console.log('><')} value={"><"} variant={'primary-btn'} />
-          <CustomButton onPress={() => handleClick('%')} value={"%"} variant={'primary-btn'} />
-          <CustomButton onPress={() => handleOperation('/')} value={"/"} variant={'secondary-btn'} />
-        </div>
-        <div className="button-align">
-          <CustomButton onPress={() => handleClick(7)} value={7} variant={'default-btn'} />
-          <CustomButton onPress={() => handleClick(8)} value={8} variant={'default-btn'} />
-          <CustomButton onPress={() => handleClick(9)} value={9} variant={'default-btn'} />
-          <CustomButton onPress={() => handleOperation('x')} value={"x"} variant={'secondary-btn'} />
-        </div>
-        <div className="button-align">
-          <CustomButton onPress={() => handleClick(4)} value={4} variant={'default-btn'} />
-          <CustomButton onPress={() => handleClick(5)} value={5} variant={'default-btn'} />
-          <CustomButton onPress={() => handleClick(6)} value={6} variant={'default-btn'} />
-          <CustomButton onPress={() => handleOperation('-')} value={"-"} variant={'secondary-btn'} />
-        </div>
-        <div className="button-align">
-          <CustomButton onPress={() => handleClick(1)} value={1} variant={'default-btn'} />
-          <CustomButton onPress={() => handleClick(2)} value={2} variant={'default-btn'} />
-          <CustomButton onPress={() => handleClick(3)} value={3} variant={'default-btn'} />
-          <CustomButton onPress={() => handleOperation('+')} value={"+"} variant={'secondary-btn'} />
-        </div>
-        <div className="button-align">
-          <CustomButton useId={true} onPress={() => handleClick(0)} value={0} variant={'default-btn'} />
-          <CustomButton onPress={() => handleClick('.')} value={"."} variant={'default-btn'} />
-          <CustomButton onPress={() => onRequestValue()} value={"="} variant={'secondary-btn'} />
-        </div>
+    <>
+    <header>
+      <h1>Calculadora dos Devs</h1>
+    </header>
+      <main className='App-container'>
+        <section className="calculator-display">
+          <span className='calculator-result'>{count}</span>
+        </section>
+        <section className="calculator-pad">
+          <div className="button-align">
+            <CustomButton onPress={() => handleCleanDisplay()} value={"AC"} variant={'primary-btn'} />
+            <CustomButton onPress={() => console.log('><')} value={"><"} variant={'primary-btn'} />
+            <CustomButton onPress={() => handleClick('%')} value={"%"} variant={'primary-btn'} />
+            <CustomButton onPress={() => handleOperation('/')} value={"/"} variant={'secondary-btn'} />
+          </div>
+          <div className="button-align">
+            <CustomButton onPress={() => handleClick(7)} value={7} variant={'default-btn'} />
+            <CustomButton onPress={() => handleClick(8)} value={8} variant={'default-btn'} />
+            <CustomButton onPress={() => handleClick(9)} value={9} variant={'default-btn'} />
+            <CustomButton onPress={() => handleOperation('x')} value={"x"} variant={'secondary-btn'} />
+          </div>
+          <div className="button-align">
+            <CustomButton onPress={() => handleClick(4)} value={4} variant={'default-btn'} />
+            <CustomButton onPress={() => handleClick(5)} value={5} variant={'default-btn'} />
+            <CustomButton onPress={() => handleClick(6)} value={6} variant={'default-btn'} />
+            <CustomButton onPress={() => handleOperation('-')} value={"-"} variant={'secondary-btn'} />
+          </div>
+          <div className="button-align">
+            <CustomButton onPress={() => handleClick(1)} value={1} variant={'default-btn'} />
+            <CustomButton onPress={() => handleClick(2)} value={2} variant={'default-btn'} />
+            <CustomButton onPress={() => handleClick(3)} value={3} variant={'default-btn'} />
+            <CustomButton onPress={() => handleOperation('+')} value={"+"} variant={'secondary-btn'} />
+          </div>
+          <div className="button-align">
+            <CustomButton useId={true} onPress={() => handleClick(0)} value={0} variant={'default-btn'} />
+            <CustomButton onPress={() => handleClick('.')} value={"."} variant={'default-btn'} />
+            <CustomButton onPress={() => onRequestValue()} value={"="} variant={'secondary-btn'} />
+          </div>
 
-      </section>
-    </main>
+        </section>
+      </main>
+      <footer className='footer-align'>
+        <p>Feita pelos Devs</p>
+        <a href='https://github.com/smksouza' target='blank'>Samuel Souza</a>
+        <a href='https://github.com/cfias'>Cleidson Fias</a>
+        <a href='https://github.com/devmartins03'>Maykon Martins</a>
+        <a href='https://github.com/plfmoura'>Pedro Moura</a>
+        <p>Agosto 2023</p>
+      </footer>
+    </>
+
   )
 }
 
