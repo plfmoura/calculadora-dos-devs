@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 import CustomButton from './components/CustomButton'
 
@@ -47,6 +47,10 @@ function App() {
     setFirsTerm(null);
     setOperator(null);
   };
+
+  // const handleAlgumaCoisa = () => {
+
+  // }
 
   return (
     <>
