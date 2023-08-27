@@ -8,6 +8,11 @@
     font-size: 30px;
 }
 
+#btn:hover {
+    transform: scale(1.05);
+    transition: all 100ms ease-in-out;
+}
+
 .primary-btn {
     background-color: #a6a6a6;
     color: #000;
