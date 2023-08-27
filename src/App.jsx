@@ -50,9 +50,9 @@ function App() {
 
   return (
     <>
-    <header>
-      <h1>Calculadora dos Devs</h1>
-    </header>
+      <header>
+        <h1>CALCULADORA DOS DEVS</h1>
+      </header>
       <main className='App-container'>
         <section className="calculator-display">
           <span className='calculator-result'>{count}</span>
@@ -91,7 +91,7 @@ function App() {
         </section>
       </main>
       <footer className='footer-align'>
-        <p>Feita pelos Devs</p>
+        <p>Feita pelos Devs do Club dos Devs</p>
         <a href='https://github.com/smksouza' target='blank'>Samuel Souza</a>
         <a href='https://github.com/cfias'>Cleidson Fias</a>
         <a href='https://github.com/devmartins03'>Maykon Martins</a>
