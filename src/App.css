@@ -1,4 +1,10 @@
-.App-container {
+.App {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.app-container {
   background-color: #111;
   width: 18rem;
   height: 30rem;
@@ -11,17 +17,24 @@
   width: 100%;
   height: 30%;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
   justify-content: right;
+  align-items: flex-end;
   margin-bottom: 2%;
   border: 1px solid #999;
   border-radius: 20px;
   user-select: none;
+  overflow: hidden;
 }
 
 .calculator-display .calculator-result {
   font-size: 5rem;
-  margin-right: 5%;
+  margin: -15px 15px 0 0;
+}
+
+.calculator-display .calculator-temporary {
+  margin: 10px 10%;
+  font-size: 1rem;
 }
 
 .calculator-pad {
