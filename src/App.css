@@ -29,7 +29,13 @@
 
 .calculator-display .calculator-result {
   font-size: 5rem;
-  margin: -15px 15px 0 0;
+  margin: -25px 15px 0 0;
+}
+
+.calculator-display .calculator-imc-feedback {
+  font-size: .8rem;
+  margin-right: 10%;
+  font-weight: 700;
 }
 
 .calculator-display .calculator-temporary {
@@ -63,7 +69,37 @@
 }
 
 .footer-align {
+  text-align: center;
+  overflow: hidden;
+}
+
+.footer-btn {
+  margin-top: 2rem;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.name-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  opacity: 1;
+  transform: translateY(-150px);
+  transition: all 500ms ease-in-out;
+  background-color: #111;
+  opacity: 0;
+  pointer-events: none;
+  padding: 10px;
+}
+
+.name-container a {
+  color: #fff;
+  font-weight: bold;
+}
+
+.active {
+  transform: translateY(0px);
+  opacity: 1;
+  pointer-events: fill;
+  margin-top: 10px;
 }
