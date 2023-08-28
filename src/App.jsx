@@ -1,12 +1,15 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import CustomButton from './components/CustomButton'
+import { checkIMC } from './utils/checkIMC';
 
-function App() {
+export default function App() {
   const [firstTerm, setFirsTerm] = useState(null);
   const [operator, setOperator] = useState(null);
   const [count, setCount] = useState("0");
   const [temp, setTemp] = useState([]);
+  const [imc, setImc] = useState(false);
+  const [imcFeedback, setImcFeedback] = useState("-");
 
   const handleClick = (value) => {
     setTemp([temp + value])
@@ -25,28 +28,37 @@ function App() {
 
   const onRequestValue = () => {
     let result;
-    if (firstTerm !== null && operator !== null && count !== null) {
-      switch (operator) {
-        case "+":
-          result = Number(firstTerm) + Number(count);
-          setTemp([`${temp}=${result}`]);
-          setCount(result);
-          break;
-        case "-":
-          result = Number(firstTerm) - Number(count);
-          setTemp([`${temp}=${result}`]);
-          setCount(result);
-          break;
-        case "x":
-          result = Number(firstTerm) * Number(count);
-          setTemp([`${temp}=${result}`]);
-          setCount(result);
-          break;
-        default:
-          result = Number(firstTerm) / Number(count);
-          setTemp([`${temp}=${result}`]);
-          setCount(result);
-          break;
+    if (imc === true) {
+      let weight = Number(firstTerm);
+      let height = Number(count) * Number(count)
+      result = weight / height;
+      setTemp([`${temp} = ${result.toFixed(2)}`]);
+      setImcFeedback(checkIMC(Number(result.toFixed(2))));
+      setCount(result.toFixed(2));
+    } else {
+      if (firstTerm !== null && operator !== null && count !== null) {
+        switch (operator) {
+          case "+":
+            result = Number(firstTerm) + Number(count);
+            setTemp([`${temp}=${result}`]);
+            setCount(result);
+            break;
+          case "-":
+            result = Number(firstTerm) - Number(count);
+            setTemp([`${temp}=${result}`]);
+            setCount(result);
+            break;
+          case "x":
+            result = Number(firstTerm) * Number(count);
+            setTemp([`${temp}=${result}`]);
+            setCount(result.toFixed());
+            break;
+          default:
+            result = Number(firstTerm) / Number(count);
+            setTemp([`${temp}=${result}`]);
+            setCount(result);
+            break;
+        }
       }
     }
   };
@@ -57,6 +69,9 @@ function App() {
       setOperator(operator);
       setCount("0");
     }
+    if (operator === 'IMC') {
+      setImc(true);
+    }
   };
 
   const handleCleanDisplay = () => {
@@ -64,7 +79,11 @@ function App() {
     setTemp([])
     setFirsTerm(null);
     setOperator(null);
+    setImc(false);
+    setImcFeedback("-");
   };
+
+  const [active, setActive] = useState(false);
 
   return (
     <main className='App'>
@@ -73,13 +92,14 @@ function App() {
       </header>
       <article className='app-container'>
         <section className="calculator-display">
-          <span className='calculator-temporary'>{temp.length == 0 ? "-" : temp}</span> 
+          <span style={{ opacity: temp.length == 0 ? 0 : 1 }} className='calculator-temporary'>{temp.length == 0 ? "-" : temp}</span>
+          <span style={{ opacity: imcFeedback === "-" ? 0 : 1 }} className='calculator-imc-feedback'>{imcFeedback.toUpperCase()}</span>
           <span className='calculator-result'>{count}</span>
         </section>
         <section className="calculator-pad">
           <div className="button-align">
-            <CustomButton onPress={() => handleCleanDisplay()} value={"AC"} variant={'primary-btn'} />
-            <CustomButton onPress={() => console.log('><')} value={"><"} variant={'primary-btn'} />
+            <CustomButton sx={styles.erase_btn} onPress={() => handleCleanDisplay()} value={"AC"} variant={'primary-btn'} />
+            <CustomButton sx={styles.imc_btn} onPress={() => handleOperation('IMC')} value={"IMC"} variant={'primary-btn'} />
             <CustomButton onPress={() => handleClick('%')} value={"%"} variant={'primary-btn'} />
             <CustomButton onPress={() => handleOperation('/')} value={"/"} variant={'secondary-btn'} />
           </div>
@@ -109,16 +129,26 @@ function App() {
         </section>
       </article>
       <footer className='footer-align'>
-        <p>Feita pelos Devs do Club dos Devs</p>
-        <a href='https://github.com/smksouza' target='blank'>Samuel Souza</a>
-        <a href='https://github.com/cfias'>Cleidson Fias</a>
-        <a href='https://github.com/devmartins03'>Maykon Martins</a>
-        <a href='https://github.com/plfmoura'>Pedro Moura</a>
+        <button className='footer-btn' onClick={() => setActive(!active)}>Feita pelos Devs do Club dos Devs</button>
+        <div className={active ? 'name-container active' : 'name-container'}>
+          <a href='https://github.com/smksouza' target='blank'>Samuel Souza</a>
+          <a href='https://github.com/cfias'>Cleidson Fias</a>
+          <a href='https://github.com/devmartins03'>Maykon Martins</a>
+          <a href='https://github.com/plfmoura'>Pedro Moura</a>
+          <a href='https://github.com/plfmoura'>Gabriel Santos</a>
+        </div>
         <p>Agosto 2023</p>
       </footer>
     </main>
-
   )
 }
 
-export default App
+const styles = {
+  imc_btn: {
+    fontSize: 20
+  },
+  erase_btn: {
+    backgroundColor: '#ff4402',
+    color: '#fff'
+  }
+}
