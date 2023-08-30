@@ -12,15 +12,16 @@
 .app-container {
   background-color: #111;
   width: 18rem;
-  height: 30rem;
+  height: 32rem;
   padding: 5%;
   border-radius: 20px;
+  transition: all 200ms ease-in-out;
 }
 
 .calculator-display {
   background-color: #767676bb;
   width: 100%;
-  height: 30%;
+  height: 10rem;
   display: flex;
   flex-direction: column;
   justify-content: right;
@@ -53,6 +54,7 @@
   height: 70%;
   display: flex;
   justify-content: space-between;
+  overflow: hidden;
   flex-direction: column;
 }
 
@@ -60,6 +62,31 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-top: .2rem;
+}
+
+.options-align {
+  display: none;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.active-options {
+  animation: appears-options 200ms ease-in-out normal;
+  display: flex;
+  margin-top: .2rem;
+}
+
+@keyframes appears-options {
+  from {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* button 0 style  */
