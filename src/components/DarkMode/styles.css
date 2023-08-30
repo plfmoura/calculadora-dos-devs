@@ -1,11 +1,42 @@
-.page-mode {
-    background: #fff;
-    width: 100px;
-    height: 50px;
-    border-radius: 25px;
+.dark_mode {
+    margin-top: -20px;
+    margin-left: 10px;
 }
 
-.icons {
+.dark_mode_label {
+    width: 50px;
+    height: 50px;
+    display: grid;
+    place-items: center;
+    background: #f50000;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.dark_mode_label:after {
+    content: "";
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 3px;
+    left: 3px;
     
+   
+    border-radius: 180px;
+    transition: 0.3s;
+}
+.dark_mode_input {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+.dark_mode_input:checked + .dark_mode_label {
+    background: #1900ff;
+    
+}
+
+.dark_mode_label .icon {
     width: 40px;
+    z-index: 100;
+    transition: 0.3s;
+    
 }
