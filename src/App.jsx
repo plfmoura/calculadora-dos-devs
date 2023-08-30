@@ -10,9 +10,7 @@ export default function App() {
   const [count, setCount] = useState("0");
   const [temp, setTemp] = useState([]);
   const [imc, setImc] = useState(false);
-  const [percentage, setPercentage] = useState(false);
   const [imcFeedback, setImcFeedback] = useState("-");
-  const [initial, setInitial] = useState(true);
 
   const handleClick = (value) => {
     setTemp([temp + value])
@@ -30,16 +28,6 @@ export default function App() {
   };
 
   const onRequestValue = () => {
-    if (initial === true) {
-      setInitial(false);
-    } else {
-      setAlert(true);
-      setTimeout(() => {
-        setAlert(false);
-      }, [500]);
-      return
-    }
-
     let result;
     if (imc === true) {
       let weight = Number(firstTerm);
@@ -48,11 +36,6 @@ export default function App() {
       setTemp([`${temp} = ${result.toFixed(2)}`]);
       setImcFeedback(checkIMC(Number(result.toFixed(2))));
       setCount(result.toFixed(2));
-    } else if (percentage === true) {
-      let part = Number(firstTerm) * Number(count);
-      result = part / 100;
-      setTemp([`${temp} = ${result}`]);
-      setCount(result);
     } else {
       if (firstTerm !== null && operator !== null && count !== null) {
         switch (operator) {
@@ -90,25 +73,18 @@ export default function App() {
     if (operator === 'IMC') {
       setImc(true);
     }
-    if (operator === '%') {
-      setPercentage(true);
-    }
   };
 
   const handleCleanDisplay = () => {
-    setInitial(true)
     setCount("0");
     setTemp([])
     setFirsTerm(null);
     setOperator(null);
     setImc(false);
-    setPercentage(false);
     setImcFeedback("-");
   };
 
   const [active, setActive] = useState(false);
-  const [alert, setAlert] = useState(false);
-  const [options, setOptions] = useState(true);
 
   return (
     <main className='App'>
@@ -116,24 +92,17 @@ export default function App() {
       <header>
         <h1>CALCULADORA DOS DEVS</h1>
       </header>
-      <button onClick={() => setOptions(!options)}>Mais funcionalidades</button>
-      <article style={{height: options ? "38rem" : "33rem"}} className='app-container'>
+      <article className='app-container'>
         <section className="calculator-display">
           <span style={{ opacity: temp.length == 0 ? 0 : 1 }} className='calculator-temporary'>{temp.length == 0 ? "-" : temp}</span>
           <span style={{ opacity: imcFeedback === "-" ? 0 : 1 }} className='calculator-imc-feedback'>{imcFeedback.toUpperCase()}</span>
           <span className='calculator-result'>{count}</span>
         </section>
         <section className="calculator-pad">
-          <div className={options ? "options-align active-options" : "options-align"}>
-            <CustomButton sx={styles.imc_btn} onPress={() => handleCleanDisplay()} value={"AC"} variant={'primary-btn'} />
-            <CustomButton sx={styles.imc_btn} onPress={() => handleOperation('IMC')} value={"IMC"} variant={'primary-btn'} />
-            <CustomButton sx={styles.imc_btn} onPress={() => handleOperation('%')} value={"%"} variant={'primary-btn'} />
-            <CustomButton sx={styles.imc_btn} onPress={() => handleOperation('||')} value={"||"} variant={'primary-btn'} />
-          </div>
           <div className="button-align">
-            <CustomButton sx={styles.erase_btn} onPress={() => handleCleanDisplay()} value={"CE"} variant={alert ? 'erase-btn-active' : 'erase-btn'} />
-            <CustomButton sx={styles.erase_btn} onPress={() => handleOperation('C')} value={"C"} variant={'primary-btn'} />
-            <CustomButton onPress={() => handleOperation('apagar')} value={"<"} variant={'primary-btn'} />
+            <CustomButton sx={styles.erase_btn} onPress={() => handleCleanDisplay()} value={"AC"} variant={'primary-btn'} />
+            <CustomButton sx={styles.imc_btn} onPress={() => handleOperation('IMC')} value={"IMC"} variant={'primary-btn'} />
+            <CustomButton onPress={() => handleClick('%')} value={"%"} variant={'primary-btn'} />
             <CustomButton onPress={() => handleOperation('/')} value={"/"} variant={'secondary-btn'} />
           </div>
           <div className="button-align">
@@ -180,4 +149,8 @@ const styles = {
   imc_btn: {
     fontSize: 20
   },
+  erase_btn: {
+    backgroundColor: '#ff4402',
+    color: '#fff'
+  }
 }
