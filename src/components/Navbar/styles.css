@@ -1,0 +1,25 @@
+.navigation-container {
+    background: #000;
+    position: fixed;
+    width: 100vw;
+    height: 6vh;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navigation-content {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+}
+
+.navigation-content .nav-item {
+    
+}
+
+.nav-dropdown-align {
+    display: flex;
+    gap: .5rem;
+}
