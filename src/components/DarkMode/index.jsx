@@ -1,25 +1,24 @@
-import "./styles.css";
-import Sun from "@mui/icons-material/LightMode";
-import Moon from "@mui/icons-material/Brightness3";
-import { useState } from "react";
+import './styles.css';
+import Sun from '@mui/icons-material/LightMode';
+import Moon from '@mui/icons-material/Brightness3';
+import { useState } from 'react';
 
 export default function DarkMode() {
-
-  const [active, setActive] = useState(false)
+  const [active, setActive] = useState(false);
 
   const setDarkMode = () => {
-    document.querySelector("body").setAttribute("data-theme", "dark");
-    localStorage.setItem("selectedTheme", "dark");
+    document.querySelector('body').setAttribute('data-theme', 'dark');
+    localStorage.setItem('selectedTheme', 'dark');
   };
 
   const setLightMode = () => {
-    document.querySelector("body").setAttribute("data-theme", "light");
-    localStorage.setItem("selectedTheme", "dark");
+    document.querySelector('body').setAttribute('data-theme', 'light');
+    localStorage.setItem('selectedTheme', 'dark');
   };
 
-  const selectedTheme = localStorage.getItem("selectedTheme");
+  const selectedTheme = localStorage.getItem('selectedTheme');
 
-  if (selectedTheme === "dark") {
+  if (selectedTheme === 'dark') {
     setDarkMode();
   }
   const toggleTheme = (e) => {
@@ -28,19 +27,29 @@ export default function DarkMode() {
   };
 
   return (
-    <div className="dark_mode">
+    <div className='dark_mode'>
       <input
-        className="dark_mode_input"
-        type="checkbox"
-        id="darkmode-toggle"
+        className='dark_mode_input'
+        type='checkbox'
+        id='darkmode-toggle'
         onChange={toggleTheme}
-        defaultChecked={selectedTheme === "dark"}
+        defaultChecked={selectedTheme === 'dark'}
       />
-      <label className="dark_mode_label" for="darkmode-toggle" onClick={() => setActive(!active)}>
-        {active ? 
-        <Sun sx={{color: "black"}} className="icon"/> :
-        <Moon sx={{color: "white"}} className="icon"/>  
-      }
+      <label
+        className='dark_mode_label'
+        htmlFor='darkmode-toggle'
+        onClick={() => setActive(!active)}>
+        {active ? (
+          <Sun
+            sx={{ color: 'black' }}
+            className='icon'
+          />
+        ) : (
+          <Moon
+            sx={{ color: 'white' }}
+            className='icon'
+          />
+        )}
       </label>
     </div>
   );

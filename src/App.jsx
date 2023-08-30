@@ -1,5 +1,5 @@
-import { useState } from "react";
-import "./App.css";
+import { useState } from 'react';
+import './App.css';
 import {
   buttonRow1,
   buttonRow2,
@@ -8,25 +8,24 @@ import {
   buttonRow5,
   buttonRow6,
   devProfiles,
-} from "./Data.json";
-import CustomButton from "./components/CustomButton";
-import { checkIMC } from "./utils/checkIMC";
-import DarkMode from "./components/DarkMode";
-import Navbar from "./components/Navbar";
+} from './Data.json';
+import CustomButton from './components/CustomButton';
+import Navbar from './components/Navbar';
+import { checkIMC } from './utils/checkIMC';
 
 export default function App() {
   const [firstTerm, setFirsTerm] = useState(null);
   const [operator, setOperator] = useState(null);
-  const [count, setCount] = useState("0");
+  const [count, setCount] = useState('0');
   const [temp, setTemp] = useState([]);
   const [imc, setImc] = useState(false);
   const [percentage, setPercentage] = useState(false);
-  const [imcFeedback, setImcFeedback] = useState("-");
+  const [imcFeedback, setImcFeedback] = useState('-');
   const [initial, setInitial] = useState(true);
 
   const handleClick = (value) => {
     setTemp([temp + value]);
-    if (count === "0") {
+    if (count === '0') {
       setCount(value);
     } else {
       setCount(count + value);
@@ -66,17 +65,17 @@ export default function App() {
     } else {
       if (firstTerm !== null && operator !== null && count !== null) {
         switch (operator) {
-          case "+":
+          case '+':
             result = Number(firstTerm) + Number(count);
             setTemp([`${temp}=${result}`]);
             setCount(result);
             break;
-          case "-":
+          case '-':
             result = Number(firstTerm) - Number(count);
             setTemp([`${temp}=${result}`]);
             setCount(result);
             break;
-          case "x":
+          case 'x':
             result = Number(firstTerm) * Number(count);
             setTemp([`${temp}=${result}`]);
             setCount(result.toFixed());
@@ -95,25 +94,25 @@ export default function App() {
     setTemp([temp + operator]);
     if (firstTerm !== null) {
       setOperator(operator);
-      setCount("0");
+      setCount('0');
     }
-    if (operator === "IMC") {
+    if (operator === 'IMC') {
       setImc(true);
     }
-    if (operator === "%") {
+    if (operator === '%') {
       setPercentage(true);
     }
   };
 
   const handleCleanDisplay = () => {
     setInitial(true);
-    setCount("0");
+    setCount('0');
     setTemp([]);
     setFirsTerm(null);
     setOperator(null);
     setImc(false);
     setPercentage(false);
-    setImcFeedback("-");
+    setImcFeedback('-');
   };
 
   const [active, setActive] = useState(false);
@@ -121,34 +120,27 @@ export default function App() {
   const [options, setOptions] = useState(true);
 
   return (
-    <main className="App">
+    <main className='App'>
       <Navbar />
       <button onClick={() => setOptions(!options)}>Mais funcionalidades</button>
       <article
-        style={{ height: options ? "38rem" : "33rem" }}
-        className="app-container"
-      >
-        <section className="calculator-display">
+        style={{ height: options ? '38rem' : '33rem' }}
+        className='app-container'>
+        <section className='calculator-display'>
           <span
             style={{ opacity: temp.length == 0 ? 0 : 1 }}
-            className="calculator-temporary"
-          >
-            {temp.length == 0 ? "-" : temp}
+            className='calculator-temporary'>
+            {temp.length == 0 ? '-' : temp}
           </span>
           <span
-            style={{ opacity: imcFeedback === "-" ? 0 : 1 }}
-            className="calculator-imc-feedback"
-          >
+            style={{ opacity: imcFeedback === '-' ? 0 : 1 }}
+            className='calculator-imc-feedback'>
             {imcFeedback.toUpperCase()}
           </span>
-          <span className="calculator-result">{count}</span>
+          <span className='calculator-result'>{count}</span>
         </section>
-        <section className="calculator-pad">
-          <div
-            className={
-              options ? "options-align active-options" : "options-align"
-            }
-          >
+        <section className='calculator-pad'>
+          <div className={options ? 'options-align active-options' : 'options-align'}>
             {buttonRow1.map((button) => (
               <CustomButton
                 key={button.value}
@@ -156,7 +148,7 @@ export default function App() {
                 variant={button.variant}
                 value={button.value}
                 onPress={
-                  button.value === "AC"
+                  button.value === 'AC'
                     ? () => handleCleanDisplay()
                     : () => handleOperation(button.value)
                 }
@@ -164,23 +156,15 @@ export default function App() {
             ))}
           </div>
 
-          <div className="button-align">
+          <div className='button-align'>
             {buttonRow2.map((button) => (
               <CustomButton
                 key={button.value}
-                sx={
-                  button.value === "CE" || button.value === "C"
-                    ? styles.erase_btn
-                    : null
-                }
-                variant={
-                  button.value === "CE" && alert
-                    ? "erase-btn-active"
-                    : button.variant
-                }
+                sx={button.value === 'CE' || button.value === 'C' ? styles.erase_btn : null}
+                variant={button.value === 'CE' && alert ? 'erase-btn-active' : button.variant}
                 value={button.value}
                 onPress={
-                  button.value === "CE"
+                  button.value === 'CE'
                     ? () => handleCleanDisplay()
                     : () => handleOperation(button.value)
                 }
@@ -188,14 +172,14 @@ export default function App() {
             ))}
           </div>
 
-          <div className="button-align">
+          <div className='button-align'>
             {buttonRow3.map((button) => (
               <CustomButton
                 key={button.value}
                 variant={button.variant}
                 value={button.value}
                 onPress={
-                  button.value === "x"
+                  button.value === 'x'
                     ? () => handleOperation(button.value)
                     : () => handleClick(button.value)
                 }
@@ -203,14 +187,14 @@ export default function App() {
             ))}
           </div>
 
-          <div className="button-align">
+          <div className='button-align'>
             {buttonRow4.map((button) => (
               <CustomButton
                 key={button.value}
                 variant={button.variant}
                 value={button.value}
                 onPress={
-                  button.value === "-"
+                  button.value === '-'
                     ? () => handleOperation(button.value)
                     : () => handleClick(button.value)
                 }
@@ -218,14 +202,14 @@ export default function App() {
             ))}
           </div>
 
-          <div className="button-align">
+          <div className='button-align'>
             {buttonRow5.map((button) => (
               <CustomButton
                 key={button.value}
                 variant={button.variant}
                 value={button.value}
                 onPress={
-                  button.value === "+"
+                  button.value === '+'
                     ? () => handleOperation(button.value)
                     : () => handleClick(button.value)
                 }
@@ -233,17 +217,15 @@ export default function App() {
             ))}
           </div>
 
-          <div className="button-align">
+          <div className='button-align'>
             {buttonRow6.map((button) => (
               <CustomButton
-                useId={button.value === "0" && true}
+                useId={button.value === '0' && true}
                 key={button.value}
                 variant={button.variant}
                 value={button.value}
                 onPress={
-                  button.value === "="
-                    ? () => onRequestValue()
-                    : () => handleClick(button.value)
+                  button.value === '=' ? () => onRequestValue() : () => handleClick(button.value)
                 }
               />
             ))}
@@ -251,22 +233,23 @@ export default function App() {
         </section>
       </article>
 
-      <footer className="footer-align">
-        <button className="footer-btn" onClick={() => setActive(!active)}>
+      <footer className='footer-align'>
+        <button
+          className='footer-btn'
+          onClick={() => setActive(!active)}>
           Feita pelos Devs do Club dos Devs
         </button>
-        <div className={active ? "name-container active" : "name-container"}>
+        <div className={active ? 'name-container active' : 'name-container'}>
           {devProfiles.map((profile) => (
             <a
               key={profile.github}
               href={`https://github.com/${profile.github}`}
-              target="blank"
-            >
+              target='blank'>
               {profile.name}
             </a>
           ))}
         </div>
-        <p>{new Date().toLocaleDateString("pt-BR")}</p>
+        <p>{new Date().toLocaleDateString('pt-BR')}</p>
       </footer>
     </main>
   );
