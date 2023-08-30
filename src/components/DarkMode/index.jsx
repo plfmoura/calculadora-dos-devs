@@ -14,7 +14,7 @@ export default function DarkMode() {
 
   const setLightMode = () => {
     document.querySelector("body").setAttribute("data-theme", "light");
-    localStorage.setItem("selectedTheme", "dark");
+    localStorage.setItem("selectedTheme", "light");
   };
 
   const selectedTheme = localStorage.getItem("selectedTheme");

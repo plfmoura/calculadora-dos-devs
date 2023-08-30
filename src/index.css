@@ -1,12 +1,50 @@
 :root {
   --background: #ffffff;
   --color-font: #000000;
+  --display: #f5f5f5;
+  --equal-button: #f46067;
+  --pad: #eeeeee;
+  --buttons: #eedbda;
+  --num-buttons: #eeeeee;
+  --letter-buttons: #d86a74;
+  --num-pad: #858585;
+  --result: #d86a74;
+  --temp: #afafaf;
+  --bg-letter-btn: #e9dcda;
+
+  --border: 20px;
+  --transition: 200ms;
+  --box-shadow: #00000057;
+
+  /* BUTTON "=" #f46067
+PAD  DARK #414141
+PAD LIGHT #eeeeee
+SCREEN DARK #1c1c1c
+SCREEN LIGHT #f5f5f5
+BUTTONS LIGHT #eedbda
+BUTTONS DARK #5f5b5c
+
+LETTER BUTTONS/RESULT #d86a74
+NUM DARK/TEMP #838383
+NUM LIGHT/TEMP #afafaf */
+
 }
 
 
 [data-theme="dark"] {
-  --background: #242424;
+  --background: #000000;
   --color-font: #fff;
+  --display: #1c1c1c;
+  --equal-button: #f46067;
+  --pad: #2c2c2c;
+  --buttons: #5f5b5c;
+  --num-buttons: #eeeeee;
+  --letter-buttons: #d86a74;
+  --num-pad: #9b9b9b;
+  --result: #d86a74;
+  --temp: #838383;
+
+  --box-shadow: #61616130;
 }
 
 
@@ -30,4 +68,5 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  transition: all var(--transition) ease;
 }

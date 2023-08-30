@@ -1,5 +1,5 @@
 .navigation-container {
-    background: #000;
+    background: var(--display);
     position: fixed;
     width: 100vw;
     height: 6vh;
