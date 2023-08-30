@@ -50,7 +50,7 @@
   height: 70%;
   display: flex;
   justify-content: space-between;
-  overflow: hidden;
+  overflow: visible;
   flex-direction: column;
 }
 
