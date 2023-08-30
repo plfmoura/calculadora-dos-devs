@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import RoundedButton from '../RoundedButton';
 import {
     buttonRow1,
@@ -8,7 +8,7 @@ import {
     buttonRow5,
     buttonRow6,
 } from "../../Data.json";
-import { checkIMC } from "../../utils/checkIMC";
+import { checkIMC, checkOperator } from "../../utils/checkOperations";
 import './styles.css'
 
 export default function Calculator() {
@@ -88,8 +88,14 @@ export default function Calculator() {
         }
     };
 
+    useEffect(() => {
+        if(temp.length > 0){
+            console.log(checkOperator(temp[0]));
+        }
+    }, [temp]);
+
     const handleOperation = (operator) => {
-        if(!firstTerm){
+        if(!firstTerm || checkOperator(temp[0])){
             return
         }
         setTemp([temp + operator]);
