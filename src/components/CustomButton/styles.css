@@ -37,3 +37,22 @@
 .default-btn:hover {
     background-color: #212020;
 }
+
+.erase-btn {
+    background-color: #ff4402;
+    color: #fff;
+}
+
+.erase-btn-active {
+    animation: pulse 300ms ease-in-out infinite;
+    background-color: #fa571b;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0.8);
+    }
+}
