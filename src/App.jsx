@@ -1,31 +1,40 @@
-import { useState } from 'react'
-import './App.css'
-import CustomButton from './components/CustomButton'
+import { useState } from 'react';
+import './App.css';
+import {
+  buttonRow1,
+  buttonRow2,
+  buttonRow3,
+  buttonRow4,
+  buttonRow5,
+  buttonRow6,
+  devProfiles,
+} from './Data.json';
+import CustomButton from './components/CustomButton';
 import { checkIMC } from './utils/checkIMC';
 import DarkMode from './components/DarkMode';
 
 export default function App() {
   const [firstTerm, setFirsTerm] = useState(null);
   const [operator, setOperator] = useState(null);
-  const [count, setCount] = useState("0");
+  const [count, setCount] = useState('0');
   const [temp, setTemp] = useState([]);
   const [imc, setImc] = useState(false);
   const [percentage, setPercentage] = useState(false);
-  const [imcFeedback, setImcFeedback] = useState("-");
+  const [imcFeedback, setImcFeedback] = useState('-');
   const [initial, setInitial] = useState(true);
 
   const handleClick = (value) => {
-    setTemp([temp + value])
-    if (count === "0") {
-      setCount(value)
+    setTemp([temp + value]);
+    if (count === '0') {
+      setCount(value);
     } else {
       setCount(count + value);
     }
 
     if (firstTerm === null) {
-      setFirsTerm(value)
+      setFirsTerm(value);
     } else if (firstTerm !== null && operator === null) {
-      setFirsTerm(firstTerm + value)
+      setFirsTerm(firstTerm + value);
     }
   };
 
@@ -37,13 +46,13 @@ export default function App() {
       setTimeout(() => {
         setAlert(false);
       }, [500]);
-      return
+      return;
     }
 
     let result;
     if (imc === true) {
       let weight = Number(firstTerm);
-      let height = Number(count) * Number(count)
+      let height = Number(count) * Number(count);
       result = weight / height;
       setTemp([`${temp} = ${result.toFixed(2)}`]);
       setImcFeedback(checkIMC(Number(result.toFixed(2))));
@@ -56,17 +65,17 @@ export default function App() {
     } else {
       if (firstTerm !== null && operator !== null && count !== null) {
         switch (operator) {
-          case "+":
+          case '+':
             result = Number(firstTerm) + Number(count);
             setTemp([`${temp}=${result}`]);
             setCount(result);
             break;
-          case "-":
+          case '-':
             result = Number(firstTerm) - Number(count);
             setTemp([`${temp}=${result}`]);
             setCount(result);
             break;
-          case "x":
+          case 'x':
             result = Number(firstTerm) * Number(count);
             setTemp([`${temp}=${result}`]);
             setCount(result.toFixed());
@@ -82,10 +91,10 @@ export default function App() {
   };
 
   const handleOperation = (operator) => {
-    setTemp([temp + operator])
+    setTemp([temp + operator]);
     if (firstTerm !== null) {
       setOperator(operator);
-      setCount("0");
+      setCount('0');
     }
     if (operator === 'IMC') {
       setImc(true);
@@ -96,14 +105,14 @@ export default function App() {
   };
 
   const handleCleanDisplay = () => {
-    setInitial(true)
-    setCount("0");
-    setTemp([])
+    setInitial(true);
+    setCount('0');
+    setTemp([]);
     setFirsTerm(null);
     setOperator(null);
     setImc(false);
     setPercentage(false);
-    setImcFeedback("-");
+    setImcFeedback('-');
   };
 
   const [active, setActive] = useState(false);
@@ -117,67 +126,141 @@ export default function App() {
         <h1>CALCULADORA DOS DEVS</h1>
       </header>
       <button onClick={() => setOptions(!options)}>Mais funcionalidades</button>
-      <article style={{height: options ? "38rem" : "33rem"}} className='app-container'>
-        <section className="calculator-display">
-          <span style={{ opacity: temp.length == 0 ? 0 : 1 }} className='calculator-temporary'>{temp.length == 0 ? "-" : temp}</span>
-          <span style={{ opacity: imcFeedback === "-" ? 0 : 1 }} className='calculator-imc-feedback'>{imcFeedback.toUpperCase()}</span>
+      <article
+        style={{ height: options ? '38rem' : '33rem' }}
+        className='app-container'>
+        <section className='calculator-display'>
+          <span
+            style={{ opacity: temp.length == 0 ? 0 : 1 }}
+            className='calculator-temporary'>
+            {temp.length == 0 ? '-' : temp}
+          </span>
+          <span
+            style={{ opacity: imcFeedback === '-' ? 0 : 1 }}
+            className='calculator-imc-feedback'>
+            {imcFeedback.toUpperCase()}
+          </span>
           <span className='calculator-result'>{count}</span>
         </section>
-        <section className="calculator-pad">
-          <div className={options ? "options-align active-options" : "options-align"}>
-            <CustomButton sx={styles.imc_btn} onPress={() => handleCleanDisplay()} value={"AC"} variant={'primary-btn'} />
-            <CustomButton sx={styles.imc_btn} onPress={() => handleOperation('IMC')} value={"IMC"} variant={'primary-btn'} />
-            <CustomButton sx={styles.imc_btn} onPress={() => handleOperation('%')} value={"%"} variant={'primary-btn'} />
-            <CustomButton sx={styles.imc_btn} onPress={() => handleOperation('||')} value={"||"} variant={'primary-btn'} />
+        <section className='calculator-pad'>
+          
+          <div className={options ? 'options-align active-options' : 'options-align'}>
+            {buttonRow1.map((button) => (
+              <CustomButton
+                key={button.value}
+                sx={styles.imc_btn}
+                variant={button.variant}
+                value={button.value}
+                onPress={
+                  button.value === 'AC'
+                    ? () => handleCleanDisplay()
+                    : () => handleOperation(button.value)
+                }
+              />
+            ))}
           </div>
-          <div className="button-align">
-            <CustomButton sx={styles.erase_btn} onPress={() => handleCleanDisplay()} value={"CE"} variant={alert ? 'erase-btn-active' : 'erase-btn'} />
-            <CustomButton sx={styles.erase_btn} onPress={() => handleOperation('C')} value={"C"} variant={'primary-btn'} />
-            <CustomButton onPress={() => handleOperation('apagar')} value={"<"} variant={'primary-btn'} />
-            <CustomButton onPress={() => handleOperation('/')} value={"/"} variant={'secondary-btn'} />
+
+          <div className='button-align'>
+            {buttonRow2.map((button) => (
+              <CustomButton
+                key={button.value}
+                sx={button.value === 'CE' || button.value === 'C' ? styles.erase_btn : null}
+                variant={button.value === 'CE' && alert ? 'erase-btn-active' : button.variant}
+                value={button.value}
+                onPress={
+                  button.value === 'CE'
+                    ? () => handleCleanDisplay()
+                    : () => handleOperation(button.value)
+                }
+              />
+            ))}
           </div>
-          <div className="button-align">
-            <CustomButton onPress={() => handleClick("7")} value={7} variant={'default-btn'} />
-            <CustomButton onPress={() => handleClick("8")} value={8} variant={'default-btn'} />
-            <CustomButton onPress={() => handleClick("9")} value={9} variant={'default-btn'} />
-            <CustomButton onPress={() => handleOperation('x')} value={"x"} variant={'secondary-btn'} />
+
+          <div className='button-align'>
+            {buttonRow3.map((button) => (
+              <CustomButton
+                key={button.value}
+                variant={button.variant}
+                value={button.value}
+                onPress={
+                  button.value === 'x'
+                    ? () => handleOperation(button.value)
+                    : () => handleClick(button.value)
+                }
+              />
+            ))}
           </div>
-          <div className="button-align">
-            <CustomButton onPress={() => handleClick("4")} value={4} variant={'default-btn'} />
-            <CustomButton onPress={() => handleClick("5")} value={5} variant={'default-btn'} />
-            <CustomButton onPress={() => handleClick("6")} value={6} variant={'default-btn'} />
-            <CustomButton onPress={() => handleOperation('-')} value={"-"} variant={'secondary-btn'} />
+
+          <div className='button-align'>
+            {buttonRow4.map((button) => (
+              <CustomButton
+                key={button.value}
+                variant={button.variant}
+                value={button.value}
+                onPress={
+                  button.value === '-'
+                    ? () => handleOperation(button.value)
+                    : () => handleClick(button.value)
+                }
+              />
+            ))}
           </div>
-          <div className="button-align">
-            <CustomButton onPress={() => handleClick("1")} value={1} variant={'default-btn'} />
-            <CustomButton onPress={() => handleClick("2")} value={2} variant={'default-btn'} />
-            <CustomButton onPress={() => handleClick("3")} value={3} variant={'default-btn'} />
-            <CustomButton onPress={() => handleOperation('+')} value={"+"} variant={'secondary-btn'} />
+
+          <div className='button-align'>
+            {buttonRow5.map((button) => (
+              <CustomButton
+                key={button.value}
+                variant={button.variant}
+                value={button.value}
+                onPress={
+                  button.value === '+'
+                    ? () => handleOperation(button.value)
+                    : () => handleClick(button.value)
+                }
+              />
+            ))}
           </div>
-          <div className="button-align">
-            <CustomButton useId={true} onPress={() => handleClick("0")} value={0} variant={'default-btn'} />
-            <CustomButton onPress={() => handleClick('.')} value={"."} variant={'default-btn'} />
-            <CustomButton onPress={() => onRequestValue()} value={"="} variant={'secondary-btn'} />
+
+          <div className='button-align'>
+            {buttonRow6.map((button) => (
+              <CustomButton
+                useId={button.value === '0' && true}
+                key={button.value}
+                variant={button.variant}
+                value={button.value}
+                onPress={
+                  button.value === '=' ? () => onRequestValue() : () => handleClick(button.value)
+                }
+              />
+            ))}
           </div>
         </section>
       </article>
+      
       <footer className='footer-align'>
-        <button className='footer-btn' onClick={() => setActive(!active)}>Feita pelos Devs do Club dos Devs</button>
+        <button
+          className='footer-btn'
+          onClick={() => setActive(!active)}>
+          Feita pelos Devs do Club dos Devs
+        </button>
         <div className={active ? 'name-container active' : 'name-container'}>
-          <a href='https://github.com/smksouza' target='blank'>Samuel Souza</a>
-          <a href='https://github.com/cfias'>Cleidson Fias</a>
-          <a href='https://github.com/devmartins03'>Maykon Martins</a>
-          <a href='https://github.com/plfmoura'>Pedro Moura</a>
-          <a href='https://github.com/plfmoura'>Gabriel Santos</a>
+          {devProfiles.map((profile) => (
+            <a
+              key={profile.github}
+              href={`https://github.com/${profile.github}`}
+              target='blank'>
+              {profile.name}
+            </a>
+          ))}
         </div>
-        <p>Agosto 2023</p>
+        <p>{new Date().toLocaleDateString('pt-BR')}</p>
       </footer>
     </main>
-  )
+  );
 }
 
 const styles = {
   imc_btn: {
-    fontSize: 20
+    fontSize: 20,
   },
-}
+};

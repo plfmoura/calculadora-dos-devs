@@ -1,0 +1,128 @@
+{
+  "devProfiles": [
+    {
+      "github": "smksouza",
+      "name": "Samuel Souza"
+    },
+    {
+      "github": "cfias",
+      "name": "Cleidson Fias"
+    },
+    {
+      "github": "devmartins03",
+      "name": "Maykon Martins"
+    },
+    {
+      "github": "plfmoura",
+      "name": "Pedro Moura"
+    },
+    {
+      "github": "plfmoura2",
+      "name": "Gabriel Santos"
+    }
+  ],
+  "buttonRow1": [
+    {
+      "value": "AC",
+      "variant": "primary-btn"
+    },
+    {
+      "value": "IMC",
+      "variant": "primary-btn"
+    },
+    {
+      "value": "%",
+      "variant": "primary-btn"
+    },
+    {
+      "value": "||",
+      "variant": "primary-btn"
+    }
+  ],
+  "buttonRow2": [
+    {
+      "value": "CE",
+      "variant": "erase-btn"
+    },
+    {
+      "value": "C",
+      "variant": "primary-btn"
+    },
+    {
+      "value": "<",
+      "variant": "primary-btn"
+    },
+    {
+      "value": "/",
+      "variant": "secondary-btn"
+    }
+  ],
+  "buttonRow3": [
+    {
+      "value": "7",
+      "variant": "default-btn"
+    },
+    {
+      "value": "8",
+      "variant": "default-btn"
+    },
+    {
+      "value": "9",
+      "variant": "default-btn"
+    },
+    {
+      "value": "x",
+      "variant": "secondary-btn"
+    }
+  ],
+  "buttonRow4": [
+    {
+      "value": "4",
+      "variant": "default-btn"
+    },
+    {
+      "value": "5",
+      "variant": "default-btn"
+    },
+    {
+      "value": "6",
+      "variant": "default-btn"
+    },
+    {
+      "value": "-",
+      "variant": "secondary-btn"
+    }
+  ],
+  "buttonRow5": [
+    {
+      "value": "1",
+      "variant": "default-btn"
+    },
+    {
+      "value": "2",
+      "variant": "default-btn"
+    },
+    {
+      "value": "3",
+      "variant": "default-btn"
+    },
+    {
+      "value": "+",
+      "variant": "secondary-btn"
+    }
+  ],
+  "buttonRow6": [
+    {
+      "value": "0",
+      "variant": "default-btn"
+    },
+    {
+      "value": ".",
+      "variant": "default-btn"
+    },
+    {
+      "value": "=",
+      "variant": "secondary-btn"
+    }
+  ]
+}
