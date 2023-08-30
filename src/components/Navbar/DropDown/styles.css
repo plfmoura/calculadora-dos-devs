@@ -1,0 +1,35 @@
+.dropdown-align {
+  position: relative;
+}
+
+.dropdown-container {
+  background: #373636;
+  list-style: none;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  margin: 3.7rem 0rem 0 0;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+}
+
+.drop-item {
+  cursor: pointer;
+  text-align: center;
+}
+
+.drop-item:hover {
+  background: #161616;
+}
+
+.icon-container {
+  cursor: pointer;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 6vh;
+}
