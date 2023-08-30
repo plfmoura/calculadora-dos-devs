@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import CustomButton from './components/CustomButton'
 import { checkIMC } from './utils/checkIMC';
+import DarkMode from './components/DarkMode';
 
 export default function App() {
   const [firstTerm, setFirsTerm] = useState(null);
@@ -87,6 +88,7 @@ export default function App() {
 
   return (
     <main className='App'>
+        <DarkMode />
       <header>
         <h1>CALCULADORA DOS DEVS</h1>
       </header>
