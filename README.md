@@ -1,8 +1,74 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Calculadora dos Devs
 
-Currently, two official plugins are available:
+Calculadora feita durante a resenha com os membros da Varanda do Discord do Club dos Devs.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![PREVIEW](./PREVIEW.png)
+
+## Demo
+
+https://calculadora-dos-devs.vercel.app/
+
+
+## Rode Localmente
+
+Clone o projeto
+
+```bash
+  git clone https://github.com/plfmoura/calculadora-dos-devs.git
+```
+
+Entre no diretório do projeto
+
+```bash
+  cd calculadora-dos-devs
+```
+
+Instale dependências
+
+```bash
+  npm install
+```
+
+Rode o projeto
+
+```bash
+  npm run dev
+```
+
+
+## Autores
+
+- [@smksouza](https://www.github.com/smksouza)
+- [@cfiass](https://www.github.com/cfias)
+- [@devmartins03](https://www.github.com/devmartins03)
+- [@plfmoura](https://www.github.com/plfmoura)
+- [@plfmoura2](https://www.github.com/plfmoura2)
+- [@sampconrad](https://www.github.com/sampconrad)
+
+
+## Agradecimentos
+
+ - [Micael Mota](https://devmicaelomota.com.br/)
+ - [Congenial](https://congenial.com.br/)
+ - [Club Dos Devs](https://discord.gg/CP4B92jjYZ)
+
+
+## Contribuindo
+
+Contribuiçoes são sempre bem vindas!
+
+Veja [`CONTRIBUTING.md`](./CONTRIBUTING.md) para ver como contribuir para este projeto.
+
+Por favor, se atente ao `código de conduta` deste projeto.
+
+
+## Tech Stack
+
+![vercel](https://img.shields.io/badge/Vercel-black?logo=vercel)
+![Vite](https://img.shields.io/badge/Vite-pink?logo=vite)
+![JavaScript](https://img.shields.io/badge/JavaScript-gray?logo=JavaScript)
+![React](https://img.shields.io/badge/React-blue?logo=react)
+![mui](https://img.shields.io/badge/Mui-white?logo=mui)
+
+
