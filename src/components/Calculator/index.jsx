@@ -260,6 +260,6 @@ export default function Calculator() {
 
 const styles = {
     imc_btn: {
-        fontSize: 20,
+        fontSize: 13,
     },
 };

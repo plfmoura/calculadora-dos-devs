@@ -1,21 +1,24 @@
 #btn {
-    width: 3.7rem;
-    height: 3.7rem;
+    width: 3.4rem;
+    height: 3.4rem;
     font-weight: 700;
     border-radius: 100%;
     cursor: pointer;
     border: none;
-    font-size: 25px;
+    font-size: 20px;
+    transition: all 100ms ease-in-out;
+    margin: 5px 5px 5px 5px;
 }
 
 #btn:hover {
-    transform: scale(1.05);
-    transition: all 100ms ease-in-out;
+    transform: scale(.95);
+    
 }
 
 .primary-btn {
-    background-color: var(--buttons);
+    /* background-color: var(--buttons); */
     color: var(--letter-buttons);
+    box-shadow: var(--btn-box-shadow);
 }
 
 .primary-btn:hover {
@@ -25,6 +28,7 @@
 .secondary-btn {
     background-color: var(--buttons);
     color: var(--letter-buttons);
+    box-shadow: var(--btn-box-shadow);
 }
 
 .secondary-btn:hover {
@@ -32,12 +36,17 @@
 }
 
 .default-btn {
-    /* background-color: rgba(0, 0, 0, 0.24); */
+    background-color: var(--pad);
+    color: var(--num-pad);
+}
+
+.option-btn {
+    background-color: var(--pad);
     color: var(--num-pad);
 }
 
 .default-btn:hover {
-    background-color: #212020;
+    background-color: #2120203b;
 }
 
 .erase-btn {
