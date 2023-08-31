@@ -3,3 +3,41 @@
   align-items: center;
   flex-direction: column;
 }
+
+.footer-align {
+  text-align: center;
+  overflow: hidden;
+}
+
+.footer-btn {
+  margin-top: 2rem;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.name-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 1;
+  transform: translateY(-150px);
+  transition: all 500ms ease-in-out;
+  background-color: var(--pad);
+  border-radius: var(--border);
+  opacity: 0;
+  pointer-events: none;
+  padding: 10px;
+}
+
+.name-container a {
+  color: var(--color-font);
+  font-weight: bold;
+  color: var(--num-pad);
+}
+
+.active {
+  transform: translateY(0px);
+  opacity: 1;
+  pointer-events: fill;
+  margin-top: 10px;
+}

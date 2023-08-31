@@ -28,19 +28,19 @@
   "buttonRow1": [
     {
       "value": "AC",
-      "variant": "primary-btn"
+      "variant": "option-btn"
     },
     {
       "value": "IMC",
-      "variant": "primary-btn"
+      "variant": "option-btn"
     },
     {
       "value": "%",
-      "variant": "primary-btn"
+      "variant": "option-btn"
     },
     {
       "value": "||",
-      "variant": "primary-btn"
+      "variant": "option-btn"
     }
   ],
   "buttonRow2": [
