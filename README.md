@@ -45,6 +45,7 @@ Rode o projeto
 - [@plfmoura](https://www.github.com/plfmoura)
 - [@plfmoura2](https://www.github.com/plfmoura2)
 - [@sampconrad](https://www.github.com/sampconrad)
+- [@bieels](https://github.com/bieels)
 
 
 ## Agradecimentos
